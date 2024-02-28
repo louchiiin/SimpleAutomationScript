@@ -12,9 +12,9 @@ import org.junit.runner.RunWith;
         monochrome = true,
         glue = "stepDefinitions",
         // Specify the report formats
-        plugin = {"pretty", "html:target/cucumber-reports.html"},
+        plugin = {"pretty", "html:target/cucumber-reports.html"}
         //for specified scenarios only
-        tags = "@Test1"
+        //,tags = "@Test2"
 )
 public class TestNGRunner {
 

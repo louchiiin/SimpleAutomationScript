@@ -14,7 +14,7 @@ import org.junit.runner.RunWith;
         // Specify the report formats
         plugin = {"pretty", "html:target/cucumber-reports.html"}
         //for specified scenarios only
-        //,tags = "@Test2"
+        ,tags = "@Test2"
 )
 public class TestNGRunner {
 

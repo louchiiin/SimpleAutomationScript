@@ -23,7 +23,7 @@ Feature: Login to sauce.com website
   @SauceDemoSite @SmokeTest @Test2
   Scenario Outline: Validate Users in Sauce Demo Site using invalid accounts
     Given Username, password and login button fields are displayed
-    When User login to application using username <UserName> and password <Password>
+    When User login to application using username <UserName>and password <Password>
     Then Login error message is displayed
 
     #scenario outline will re run again based on how many Examples are displayed
@@ -31,7 +31,7 @@ Feature: Login to sauce.com website
       | UserName                | Password     |
       | standard_user_incorrect | secret_sauce |
       | locked_out_user         | secret_sauce |
-      | standard_user           | secret_sauce |
+      | [blank]                 | [blank]      |
 
   @SmokeTest @SauceDemoSite
   Scenario Outline: Validate left navigation pane in Sauce Demo Site

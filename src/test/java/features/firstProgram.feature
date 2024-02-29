@@ -5,10 +5,10 @@ Feature: Login to sauce.com website
   Background:
     Given User is on landing page
 
-  @SauceDemoSite
+  @SauceDemoSite @Test4
   Scenario Outline: Validate Users in Sauce Demo Site using valid accounts
     Given Username, password and login button fields are displayed
-    When User login to application using username <UserName> and password <Password>
+    When User login to application using username <UserName>and password <Password>
     Then Home page is displayed
 
     #scenario outline will re run again based on how many Examples are displayed
@@ -33,9 +33,9 @@ Feature: Login to sauce.com website
       | locked_out_user         | secret_sauce |
       | [blank]                 | [blank]      |
 
-  @SmokeTest @SauceDemoSite
+  @SmokeTest @SauceDemoSite @Test3
   Scenario Outline: Validate left navigation pane in Sauce Demo Site
-    Given User login to application using username <UserName> and password <Password>
+    Given User login to application using username <UserName>and password <Password>
     When User clicks the left navigation pane
     Then Left navigation pane should display
     And Following Items should be displayed
@@ -55,7 +55,7 @@ Feature: Login to sauce.com website
 
   @SmokeTest @SauceDemoSite @Test1
     Scenario Outline: Validate if there are displayed products
-    Given User login to application using username <UserName> and password <Password>
+    Given User login to application using username <UserName>and password <Password>
     When Home page is displayed
     Then Product items should be displayed
 

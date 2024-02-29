@@ -1,5 +1,6 @@
 package stepDefinitions;
 
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
@@ -29,6 +30,9 @@ public class HomePageStepDefinition {
 
     @When("User clicks the left navigation pane")
     public void user_clicks_the_left_navigation_pane() {
+        if(mHomePage == null) {
+            mHomePage = mTestContext.mPageObjectManager.getHomePage();
+        }
         mHomePage.getLeftNavigationBtn().click();
     }
 
@@ -44,13 +48,26 @@ public class HomePageStepDefinition {
         System.out.println(expectedItems.size());
         for (int i = 0; i < expectedItems.size(); i++) {
             System.out.println(actualItems.get(i).getText());
-            System.out.println(expectedItems.get(i));
-
             System.out.println(actualItems.get(i).getText().equals(expectedItems.get(i)));
-
             Assert.assertEquals(actualItems.get(i).getText(), expectedItems.get(i));
         }
 
+        Thread.sleep(3000);
+    }
+
+    @And("^Click an item to add to cart (.+)$")
+    public void clickAnItemToAddToCart(int position) throws InterruptedException {
+
+        List<WebElement> buttons = mHomePage.getAddToCartBtn();
+        if(position >= 0) {
+            buttons.get(position).click();
+            //Assert.assertEquals("Failed to click add to cart button", "Remove", buttons.get(position).getText());
+        }
+        Thread.sleep(3000);
+    }
+
+    @Then("Product items is added to cart")
+    public void productItemsIsAddedToCart() throws InterruptedException {
         Thread.sleep(3000);
     }
 }

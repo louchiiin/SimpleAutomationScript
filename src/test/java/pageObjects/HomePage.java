@@ -12,6 +12,7 @@ public class HomePage {
     By leftNavigationBtn = By.xpath("//button[@id='react-burger-menu-btn']");
     By leftNavigationContainer = By.xpath("//div[@class='bm-menu-wrap']");
     By productItems = By.xpath("//nav[@class='bm-item-list']/a");
+    By addToCartBtnXpath = By.xpath("//button[contains(@class, 'btn_inventory')]\n");
 
     public HomePage(WebDriver driver) {
         this.mDriver = driver;
@@ -31,5 +32,9 @@ public class HomePage {
 
     public List<WebElement> getProductItems() {
         return mDriver.findElements(productItems);
+    }
+
+    public List<WebElement> getAddToCartBtn() {
+        return mDriver.findElements(addToCartBtnXpath);
     }
 }

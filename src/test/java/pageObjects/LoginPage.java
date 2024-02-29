@@ -25,11 +25,9 @@ public class LoginPage {
 
     public void loginToApp(String username, String password) {
         WebElement userNameField = getUserNameField();
-        username = username.equals("[blank]") ? " ": username;
         userNameField.sendKeys(username);
 
         WebElement passwordField = getPasswordField();
-        password = password.equals("[blank]") ? " ": password;
         passwordField.sendKeys(password);
 
         WebElement loginBtn = getLoginBtn();

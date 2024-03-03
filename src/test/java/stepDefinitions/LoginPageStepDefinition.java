@@ -1,7 +1,5 @@
 package stepDefinitions;
 
-import io.cucumber.java.After;
-import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -15,21 +13,6 @@ public class LoginPageStepDefinition {
 
     public LoginPageStepDefinition(TestContextSetup testContextSetup) {
         this.mTestContext = testContextSetup;
-    }
-
-    @Before()
-    public void setUp() {
-        System.out.println("==== START OF saucedemo.com  TEST ====");
-        System.out.println("....loading.....");
-        mTestContext.setPageObjectManager();
-    }
-
-    @After
-    public void tearDown() {
-        System.out.println("==== END OF TEST ====");
-        if(mTestContext.mDriver != null) {
-            mTestContext.mDriver.close();
-        }
     }
 
     @Given("User is on landing page")

@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 public class PageObjectManager {
     public HomePage mHomePage;
     public LoginPage mLoginPage;
+    public CartPage mCartPage;
     public WebDriver driver;
 
     public PageObjectManager(WebDriver driver) {
@@ -12,10 +13,23 @@ public class PageObjectManager {
     }
 
     public HomePage getHomePage() {
-        return mHomePage = new HomePage(driver);
+        if (mHomePage == null) {
+            mHomePage = new HomePage(driver);
+        }
+        return mHomePage;
     }
 
     public LoginPage getLoginPage() {
-        return mLoginPage = new LoginPage(driver);
+        if (mLoginPage == null) {
+            mLoginPage = new LoginPage(driver);
+        }
+        return mLoginPage;
+    }
+
+    public CartPage getCartPage() {
+        if (mCartPage == null) {
+            mCartPage = new CartPage(driver);
+        }
+        return mCartPage;
     }
 }

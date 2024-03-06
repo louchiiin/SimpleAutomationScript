@@ -9,15 +9,15 @@ import utils.TestContextSetup;
 
 public class LoginPageStepDefinition {
     private final TestContextSetup mTestContext;
-    private LoginPage mLoginPage;
+    private final LoginPage mLoginPage;
 
     public LoginPageStepDefinition(TestContextSetup testContextSetup) {
         this.mTestContext = testContextSetup;
+        mLoginPage = mTestContext.mPageObjectManager.getLoginPage();
     }
 
     @Given("User is on landing page")
     public void user_is_on_landing_page() throws InterruptedException {
-        mLoginPage = mTestContext.mPageObjectManager.getLoginPage();
         Assert.assertEquals("Incorrect login page", mLoginPage.getUrl(), mTestContext.mDriver.getCurrentUrl());
         Thread.sleep(3000);
     }

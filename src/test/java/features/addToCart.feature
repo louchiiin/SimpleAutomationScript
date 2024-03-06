@@ -12,12 +12,14 @@ Feature: Add to cart Feature
     When Home page is displayed
     And Product items should be displayed
     And Click an item to add to cart <Position>
+    And Click Cart button
+    And Cart page is displayed
     Then Product items is added to cart
 
     Examples:
       | UserName                | Password     | Position |
-      | standard_user           | secret_sauce | 1        |
-      | problem_user            | secret_sauce | 2        |
-      | performance_glitch_user | secret_sauce | 3        |
-      | error_user              | secret_sauce | 4        |
-      | visual_user             | secret_sauce | 5        |
+      | standard_user           | secret_sauce | 0       |
+      | problem_user            | secret_sauce | 1        |
+      | performance_glitch_user | secret_sauce | 2        |
+      | error_user              | secret_sauce | 3        |
+      | visual_user             | secret_sauce | 4        |

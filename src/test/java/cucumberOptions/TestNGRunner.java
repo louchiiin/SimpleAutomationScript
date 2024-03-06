@@ -16,12 +16,13 @@ import org.testng.annotations.DataProvider;
         // Specify the report formats
         plugin = {"pretty", "html:target/cucumber-reports.html"}
         //for specified scenarios only
-        //,tags = "@Test5"
+        ,tags = "@Test5"
 )
 public class TestNGRunner extends AbstractTestNGCucumberTests {
-    @Override
+
+    /*@Override
     @DataProvider(parallel = true)
     public Object[][] scenarios() {
         return super.scenarios();
-    }
+    }*/
 }

@@ -4,35 +4,33 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import pageObjects.HomePage;
-import pageObjects.PageObjectManager;
 import utils.TestContextSetup;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class HomePageStepDefinition {
     private final TestContextSetup mTestContext;
     private HomePage mHomePage;
-    private PageObjectManager mPageObjectManager;
+    private final ArrayList<String> clickedItemTexts = new ArrayList<>();
 
     public HomePageStepDefinition(TestContextSetup testContextSetup) {
         this.mTestContext = testContextSetup;
+        mHomePage = mTestContext.mPageObjectManager.getHomePage();
     }
 
     @Then("Home page is displayed")
     public void home_page_is_displayed() throws InterruptedException {
-        mHomePage = mTestContext.mPageObjectManager.getHomePage();
         Assert.assertEquals("Incorrect Home page link", mHomePage.getUrl(), mTestContext.mDriver.getCurrentUrl());
         Thread.sleep(3000);
     }
 
     @When("User clicks the left navigation pane")
     public void user_clicks_the_left_navigation_pane() {
-        if(mHomePage == null) {
-            mHomePage = mTestContext.mPageObjectManager.getHomePage();
-        }
+        mHomePage = mTestContext.mPageObjectManager.getHomePage();
         mHomePage.getLeftNavigationBtn().click();
     }
 
@@ -59,15 +57,19 @@ public class HomePageStepDefinition {
     public void clickAnItemToAddToCart(int position) throws InterruptedException {
 
         List<WebElement> buttons = mHomePage.getAddToCartBtn();
-        if(position >= 0) {
+        if (position >= 0 && position < buttons.size()) {
             buttons.get(position).click();
-            //Assert.assertEquals("Failed to click add to cart button", "Remove", buttons.get(position).getText());
+            if (position < mHomePage.getProductItemName().size()) {
+                clickedItemTexts.add(mHomePage.getProductItemName().get(position).getText());
+                mHomePage.setClickedItems(clickedItemTexts);
+            }
         }
         Thread.sleep(3000);
     }
 
-    @Then("Product items is added to cart")
-    public void productItemsIsAddedToCart() throws InterruptedException {
+    @And("Click Cart button")
+    public void clickCartButton() throws InterruptedException {
+        mHomePage.getCartBtn().click();
         Thread.sleep(3000);
     }
 }

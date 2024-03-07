@@ -18,11 +18,11 @@ Feature: Add to cart Feature
 
     Examples:
       | UserName                | Password     | Position |
+      | visual_user             | secret_sauce | 0        |
       | standard_user           | secret_sauce | 0        |
       | problem_user            | secret_sauce | 1        |
       | performance_glitch_user | secret_sauce | 2        |
-      | error_user              | secret_sauce | 3        |
-      | visual_user             | secret_sauce | 4        |
+      | error_user              | secret_sauce | 1        |
 
   @SmokeTest @Test6
   Scenario Outline: Validate if user can go back to homepage after clicking cart button
@@ -40,5 +40,5 @@ Feature: Add to cart Feature
       | standard_user           | secret_sauce | 0        |
       | problem_user            | secret_sauce | 1        |
       | performance_glitch_user | secret_sauce | 2        |
-      | error_user              | secret_sauce | 3        |
-      | visual_user             | secret_sauce | 4        |
+      | error_user              | secret_sauce | 1        |
+      | visual_user             | secret_sauce | 1        |

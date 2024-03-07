@@ -28,6 +28,8 @@ public class CartPageStepDefinition {
 
     @Then("Product items is added to cart")
     public void productItemsIsAddedToCart() throws InterruptedException {
+        System.out.println("list one = " + mTestContext.mPageObjectManager.getHomePage().getClickedItems());
+        System.out.println("list two = " + mCartPage.getProductNamesFromCartList());
         Assert.assertTrue("Incorrect items was added", compareArrayLists(mTestContext.mPageObjectManager.getHomePage().getClickedItems(), mCartPage.getProductNamesFromCartList()));
         Thread.sleep(3000);
     }

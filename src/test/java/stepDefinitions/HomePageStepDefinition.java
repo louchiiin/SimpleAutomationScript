@@ -5,6 +5,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import pageObjects.HomePage;
 import utils.TestContextSetup;
 
@@ -55,16 +56,30 @@ public class HomePageStepDefinition {
 
     @And("^Click an item to add to cart (.+)$")
     public void clickAnItemToAddToCart(int position) throws InterruptedException {
+        forLogs(); //for logs
 
         List<WebElement> buttons = mHomePage.getAddToCartBtn();
         if (position >= 0 && position < buttons.size()) {
-            buttons.get(position).click();
+            WebElement button = buttons.get(position);
+            button.click();
             if (position < mHomePage.getProductItemName().size()) {
                 clickedItemTexts.add(mHomePage.getProductItemName().get(position).getText());
+
+                System.out.println("clickedItemTexts" + clickedItemTexts);
                 mHomePage.setClickedItems(clickedItemTexts);
             }
+
+            String newButtonText = mHomePage.getAddToCartBtn().get(position).getText(); //call getAddToCartBtn again in order not to be stale
+            Assert.assertEquals("Incorrect button text", "Remove", newButtonText);
         }
         Thread.sleep(3000);
+    }
+
+    private void forLogs() {
+        System.out.println("mHomePage.getProductItemName().size() " + mHomePage.getProductItemName().size());
+        for(int i = 0; i < mHomePage.getProductItemName().size(); i++) {
+            System.out.println("position " + i + " " + mHomePage.getProductItemName().get(i).getText());
+        }
     }
 
     @And("Click Cart button")

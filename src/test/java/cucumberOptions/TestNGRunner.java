@@ -14,15 +14,16 @@ import org.testng.annotations.DataProvider;
         monochrome = true,
         glue = "stepDefinitions",
         // Specify the report formats
-        plugin = {"pretty", "html:target/cucumber-reports.html"}
+        plugin = {"pretty", "html:target/cucumber-reports.html",
+        "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"}
         //for specified scenarios only
-        ,tags = "@Test6"
+        //,tags = "@Test5"
 )
 public class TestNGRunner extends AbstractTestNGCucumberTests {
 
-    /*@Override
+    @Override
     @DataProvider(parallel = true)
     public Object[][] scenarios() {
         return super.scenarios();
-    }*/
+    }
 }

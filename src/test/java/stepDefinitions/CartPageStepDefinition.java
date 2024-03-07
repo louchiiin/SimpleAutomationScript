@@ -51,4 +51,11 @@ public class CartPageStepDefinition {
 
         return true;
     }
+
+    @And("Click continue shopping button")
+    public void clickContinueShoppingButton() throws InterruptedException {
+        mCartPage.getContinueShoppingBtn().click();
+        Assert.assertEquals("Incorrect home page", mTestContext.mPageObjectManager.getHomePage().getUrl(), mTestContext.mDriver.getCurrentUrl());
+        Thread.sleep(3000);
+    }
 }

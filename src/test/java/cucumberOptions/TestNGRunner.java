@@ -16,7 +16,7 @@ import org.testng.annotations.DataProvider;
         // Specify the report formats
         plugin = {"pretty", "html:target/cucumber-reports.html"}
         //for specified scenarios only
-        ,tags = "@Test5"
+        ,tags = "@Test6"
 )
 public class TestNGRunner extends AbstractTestNGCucumberTests {
 

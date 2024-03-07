@@ -18,7 +18,26 @@ Feature: Add to cart Feature
 
     Examples:
       | UserName                | Password     | Position |
-      | standard_user           | secret_sauce | 0       |
+      | standard_user           | secret_sauce | 0        |
+      | problem_user            | secret_sauce | 1        |
+      | performance_glitch_user | secret_sauce | 2        |
+      | error_user              | secret_sauce | 3        |
+      | visual_user             | secret_sauce | 4        |
+
+  @SmokeTest @Test6
+  Scenario Outline: Validate if user can go back to homepage after clicking cart button
+    Given User login to application using username <UserName>and password <Password>
+    When Home page is displayed
+    And Product items should be displayed
+    And Click an item to add to cart <Position>
+    And Click Cart button
+    And Cart page is displayed
+    And Click continue shopping button
+    Then Home page is displayed
+
+    Examples:
+      | UserName                | Password     | Position |
+      | standard_user           | secret_sauce | 0        |
       | problem_user            | secret_sauce | 1        |
       | performance_glitch_user | secret_sauce | 2        |
       | error_user              | secret_sauce | 3        |

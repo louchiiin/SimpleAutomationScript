@@ -11,6 +11,7 @@ public class CartPage {
     private WebDriver mDriver;
     private String cartPageUrl = "https://www.saucedemo.com/cart.html";
     By cartItemList = By.xpath("//div[@class='inventory_item_name']");
+    By continueShoppingButton = By.xpath("//div[@class='cart_footer']/button[@id='continue-shopping']");
 
     public CartPage(WebDriver driver) {
         this.mDriver = driver;
@@ -27,5 +28,9 @@ public class CartPage {
             productNames.add(element.getText());
         }
         return productNames;
+    }
+
+    public WebElement getContinueShoppingBtn() {
+        return mDriver.findElement(continueShoppingButton);
     }
 }

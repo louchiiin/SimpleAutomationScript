@@ -14,10 +14,11 @@ import org.testng.annotations.DataProvider;
         monochrome = true,
         glue = "stepDefinitions",
         // Specify the report formats
-        plugin = {"pretty", "html:target/cucumber-reports.html",
-        "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"}
+        plugin = {"html:target/cucumber-reports.html", "json:target/cucumber_json",
+        "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
+        "rerun:target/failed_scenarios.txt"}
         //for specified scenarios only
-        //,tags = "@Test5"
+        ,tags = "@Test5"
 )
 public class TestNGRunner extends AbstractTestNGCucumberTests {
 
